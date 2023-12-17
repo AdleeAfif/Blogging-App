@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+  />
+  </head>
+
+  <body style="background-color: rgb(24 24 27)">
+    <!-- Header Section -->
+    <header
+      class="text-white p-4 flex justify-between items-center"
+      style="height: 10vh; background-color: rgb(24 24 27)"
+    >
+      <div>
+        <span class="text-xl font-bold">Blog.App</span>
+      </div>
+      <div>
+        <a href="/signout">Logout</a>
+      </div>
+    </header>
+
+    <main>
+      <section
+        class="relative flex items-center justify-center"
+        style="width: 100%; height: 90vh"
+      >
+        <video
+          class="absolute inset-0 object-cover w-full h-full"
+          autoplay
+          muted
+          loop
+        >
+          <source src="/resources/main.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 text-white p-8 text-center">
+          <h1 class="text-4xl font-bold mb-2">Welcome to Blog.App</h1>
+          <h2 class="text-lg mb-4">Express yourself or see others blog!</h2>
+          <div class="flex justify-center space-x-4 p-5">
+            <a href="/blog/create">
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+              >
+                Create Blog
+              </button>
+            </a>
+            <form action="/blog" method="GET">
+              <input type="hidden" id="blogId" name="blogId" value=<%= id %> />
+              <button
+                type="submit"
+                class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded"
+              >
+                Next Blog
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section
+        class="p-10 container mx-auto my-20 shadow-lg rounded-lg bg-white text-center"
+      >
+      <form action="/blog" method="POST">
+        <h1 class="text-4xl font-bold mb-2 text-gray-900 mx-auto">
+          <%=title%>
+        </h1>
+        <!-- Image and Image Header -->
+        <div class="mb-4 flex items-center justify-center">
+          <img
+            src=<%=image%>
+            alt="Blog Image"
+            class="w-1/4 h-auto object-cover rounded-lg shadow-lg mr-2"
+          />
+            <input type="hidden" id="id" name="id" value=<%= id %> />
+            <div class="flex items-center flex-col pl-5">
+              <button
+                class="text-red-500 hover:text-red-700 cursor-pointer"
+              >
+                <i class="fas fa-heart text-4xl"></i>
+              </button>
+              <span id="likeCount" class="text-gray-700 text-sm mt-1"><%= likes%></span>
+            </div>
+          
+        </div>
+
+        <!-- Blog Content -->
+        <div class="max-w-full text-left">
+          <div class="prose w-1/2 mx-auto">
+            <p>
+              <%=blogText%>
+            </p>
+          </div>
+        </div>
+        <!-- Additional content goes here -->
+        <div>
+          <div class="bg-gray-100 p-4 rounded-lg mt-4 w-1/2 mx-auto text-left">
+            <!-- Displaying existing comments -->
+            <% if(comments.length > 0) { %>
+              <div class="mt-2">
+                <h2 class="text-lg font-semibold mb-2">Comments</h2>
+                <ul>
+                  <% comments.forEach(comment => { %>
+                    <li class="bg-white rounded-lg p-4 shadow mb-4">
+                      <span class="font-semibold"><%= comment.email %></span>
+                      <p class="text-gray-600 mt-2"><%= comment.content %></p>
+                    </li>
+                  <% }); %>
+                </ul>
+              </div>
+            <% } %>
+            <h2 class="text-lg font-semibold mb-2">Leave a Comment</h2>
+              <div class="mb-4">
+                <label for="comment" class="block text-sm font-medium text-gray-600 mb-1">Comment</label>
+                <textarea
+                  id="commentContent"
+                  name="commentContent"
+                  rows="4"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-200"
+              >
+                Post Comment
+              </button>
+          </div>
+        </div>
+      </form>
+      </section>
+    </main>
+  </body>
+</html>

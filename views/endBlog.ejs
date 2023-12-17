@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body style="background-color: rgb(24 24 27)">
+    <!-- Header Section -->
+    <header
+      class="text-white p-4 flex justify-between items-center"
+      style="height: 10vh; background-color: rgb(24 24 27)"
+    >
+      <div>
+        <span class="text-xl font-bold">Blog.App</span>
+      </div>
+      <div>
+        <a href="/" class="mr-4">Home</a>
+        <a href="/logout">Logout</a>
+      </div>
+    </header>
+
+    <main>
+      <section
+        class="relative flex items-center justify-center"
+        style="width: 100%; height: 90vh"
+      >
+        <video
+          class="absolute inset-0 object-cover w-full h-full"
+          autoplay
+          muted
+          loop
+        >
+          <source src="/resources/main.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 text-white p-8 text-center">
+          <h1 class="text-4xl font-bold mb-2">Welcome to Blog.App</h1>
+          <h2 class="text-lg mb-4">Express yourself or see others blog!</h2>
+          <div class="flex justify-center space-x-4 p-5">
+            <a href="/blog/create">
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+              >
+                Create Blog
+              </button>
+            </a>
+            <a href="/blog">
+              <button
+                class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded"
+              >
+                Next Blog
+              </button>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+        class="p-10 container mx-auto my-20 shadow-lg rounded-lg bg-white text-center"
+      >
+        <h1 class="text-4xl font-bold mb-2 text-gray-900 mx-auto">
+          No New Blog Post Found
+        </h1>
+        <p>
+          Woah! You have reached the end of the blog post. Click Next to see
+          again!
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
